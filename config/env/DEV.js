@@ -7,7 +7,14 @@ const mongo = {
 
 const mongoURL = ('mongodb://' + mongo.host + ':' + mongo.port + '/' +
   masterMongoDBName);
-
+  if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
+    connection_string = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
+    process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
+    process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
+    process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
+    process.env.OPENSHIFT_APP_NAME;
+    mongoURL = connection_string;
+  }
 module.exports = {
   WWW_PORT: process.env.ZYNLA_WWW_PORT || process.env.PORT || 3000,
   MONGO_MASTER_DB_NAME: masterMongoDBName,

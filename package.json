@@ -1,6 +1,7 @@
 {
   "name": "DaaS",
   "version": "1.0.0",
+  "main":"bin/www.js",
   "scripts": {
     "test": "mocha $(find server/test -name '*.js')",
     "wpbuild": "node ./node_modules/webpack/bin/webpack.js",
